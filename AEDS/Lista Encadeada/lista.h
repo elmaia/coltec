@@ -28,4 +28,7 @@
 /// Tipo que representa os dados armazenados no item da lista
 typedef int dadosItem;
 
+/// Tipo que é uma função que compara dois dadosItem
+typedef int(*ComparaDadosItem_f)(dadosItem, dadosItem);
+
 #endif // __LISTA_h__

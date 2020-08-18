@@ -14,6 +14,7 @@
 #include "erros.h"
 #include "listaES.h"
 #include "listaED.h"
+#include "listaORD.h"
 
 /**
  * Função que faz alguns testes na lista encadeada simples.
@@ -337,6 +338,179 @@ fim:
   listaED_destroi(lista);
 }
 
+/**
+ * Função que compara dois dadosItem.
+ * @param item1 Primeiro item a ser comparado.
+ * @param item2 Segundo item a ser comparado.
+ * @return 0 se os itens forem idênticos, um valor negativo se o
+ * item1 for menor que o item2, e um valor positivo caso o
+ * item1 for maior que o item2.
+ */
+int funcaoComparaDadosItem(dadosItem item1, dadosItem item2) {
+  return item1 - item2;
+}
+
+/**
+ * Função que faz alguns testes na lista ordenada.
+ */
+void testeListaOrdenada(void) {
+
+  erro_t erro;
+  listaORD_t * lista;
+  uint32_t posicao;
+
+  (void)printf("\nCria a lista e imprime para garantir que esta vazia\n");
+  lista = listaORD_cria(funcaoComparaDadosItem);
+  listaORD_imprime(lista);
+  (void)printf("A lista esta vazia? %s\n", ( listaORD_estaVazia(lista) ? "SIM" : "NAO" ));
+
+  (void)printf("\nInsere 1 e 2, entao vai ficar 1 2\n");
+  erro = listaORD_insere(lista, 1);
+  if (erro != SUCESSO) {
+    (void)fprintf(stderr, "Erro %u\n", erro);
+    goto fim;
+  }
+  erro = listaORD_insere(lista, 2);
+  if (erro != SUCESSO) {
+    (void)fprintf(stderr, "Erro %u\n", erro);
+    goto fim;
+  }
+  (void)printf("\n* Lista apos inserir no inicio os item 1 e 2\n");
+  listaORD_imprime(lista);
+
+  (void)printf("\nInsere 9 e 10, então vai ficar 1 2 9 10\n");
+  erro = listaORD_insere(lista, 9);
+  if (erro != SUCESSO) {
+    (void)fprintf(stderr, "Erro %u\n", erro);
+    goto fim;
+  }
+  erro = listaORD_insere(lista, 10);
+  if (erro != SUCESSO) {
+    (void)fprintf(stderr, "Erro %u\n", erro);
+    goto fim;
+  }
+  (void)printf("\n* Lista apos inserir os item 9 e 10\n");
+  listaORD_imprime(lista);
+
+  (void)printf("\nInsere o item 3\n");
+  erro = listaORD_insere(lista, 3);
+  if (erro != SUCESSO) {
+    (void)fprintf(stderr, "Erro %u\n", erro);
+    goto fim;
+  }
+  (void)printf("\nInsere o item 5\n");
+  erro = listaORD_insere(lista, 5);
+  if (erro != SUCESSO) {
+    (void)fprintf(stderr, "Erro %u\n", erro);
+    goto fim;
+  }
+  (void)printf("\nInsere o item 7\n");
+  erro = listaORD_insere(lista, 7);
+  if (erro != SUCESSO) {
+    (void)fprintf(stderr, "Erro %u\n", erro);
+    goto fim;
+  }
+  (void)printf("\n* Lista apos inserir os itens 3, 5 e 7\n");
+  listaORD_imprime(lista);
+
+  (void)printf("\nTentativa de remocao do item de valor 2\n");
+  erro = listaORD_removeElemento(lista, 2);
+  if (erro != SUCESSO) {
+    (void)fprintf(stderr, "Erro %u\n", erro);
+    goto fim;
+  }
+  (void)printf("\n* Lista apos remover o elemento 2\n");
+  listaORD_imprime(lista);
+
+  (void)printf("\nTentativa de remocao do item de valor 1\n");
+  erro = listaORD_removeElemento(lista, 1);
+  if (erro != SUCESSO) {
+    (void)fprintf(stderr, "Erro %u\n", erro);
+    goto fim;
+  }
+  (void)printf("\n* Lista apos remover o elemento 1\n");
+  listaORD_imprime(lista);
+
+  (void)printf("\nTentativa de remocao do item de valor 10\n");
+  erro = listaORD_removeElemento(lista, 10);
+  if (erro != SUCESSO) {
+    (void)fprintf(stderr, "Erro %u\n", erro);
+    goto fim;
+  }
+  (void)printf("\n* Lista apos remover o elemento 10\n");
+  listaORD_imprime(lista);
+
+  (void)printf("\nTentativa de remocao do item de valor 10 novamente\n");
+  erro = listaORD_removeElemento(lista, 10);
+  if (erro != SUCESSO) {
+    (void)fprintf(stderr, "Erro %u\n", erro);
+  }
+  (void)printf("\n* Lista apos falhar em remover o elemento 10 novamente\n");
+  listaORD_imprime(lista);
+
+  (void)printf("\nTentativa de remocao do item da posicao 2\n");
+  erro = listaORD_removePosicao(lista, 2);
+  if (erro != SUCESSO) {
+    (void)fprintf(stderr, "Erro %u\n", erro);
+  }
+  (void)printf("\n* Lista apos remover o elemento da posicao 2\n");
+  listaORD_imprime(lista);
+
+  (void)printf("\nTentativa de remocao do item da posicao 0\n");
+  erro = listaORD_removePosicao(lista, 0);
+  if (erro != SUCESSO) {
+    (void)fprintf(stderr, "Erro %u\n", erro);
+  }
+  (void)printf("\n* Lista apos remover o elemento da posicao 0\n");
+  listaORD_imprime(lista);
+
+  (void)printf("\nTentativa de remocao do item da posicao 1\n");
+  erro = listaORD_removePosicao(lista, 1);
+  if (erro != SUCESSO) {
+    (void)fprintf(stderr, "Erro %u\n", erro);
+  }
+  (void)printf("\n* Lista apos remover o elemento da posicao 1\n");
+  listaORD_imprime(lista);
+
+  (void)printf("\nTentativa de remocao do item da posicao 1 novamente com a lista de 1 elemento\n");
+  erro = listaORD_removePosicao(lista, 1);
+  if (erro != SUCESSO) {
+    (void)fprintf(stderr, "Erro %u\n", erro);
+  }
+  (void)printf("\n* Lista apos falhar em remover o elemento 1 em uma lista com 1 elemento\n");
+  listaORD_imprime(lista);
+
+  (void)printf("\nTentativa de encontrar o elemento de valor 0\n");
+  erro = listaORD_busca(lista, 0, &posicao);
+  if (erro != SUCESSO) {
+    (void)fprintf(stderr, "Erro %u\n", erro);
+  }
+  else {
+    (void)printf("Foi encontrado o elemento 1 na posicao %u\n", posicao);
+  }
+
+  (void)printf("\nTentativa de encontrar o elemento de valor 5\n");
+  erro = listaORD_busca(lista, 5, &posicao);
+  if (erro != SUCESSO) {
+    (void)fprintf(stderr, "Erro %u\n", erro);
+  }
+  else {
+    (void)printf("Foi encontrado o elemento 0 na posicao %u\n", posicao);
+  }
+
+  (void)printf("\nEstado da lista\n");
+  (void)printf("A lista esta vazia? %s\n", (listaORD_estaVazia(lista) ? "SIM" : "NAO"));
+
+
+  // Label que irá agir como um Finally, ou seja, independente de erro ou não,
+  // ele é executado
+fim:
+
+  // Destroi a lista
+  (void)printf("\nDestruicao da lista\n");
+  listaORD_destroi(lista);
+}
+
 
 /**
  * Ponto de entrada do programa.
@@ -347,7 +521,7 @@ fim:
  */
 int main(int argc, char ** argv) {
 
-  testeListaEncadeadaDupla();
+  testeListaOrdenada();
 
   // Se chegou até aqui é porque correu tudo bem
   return SUCESSO;
