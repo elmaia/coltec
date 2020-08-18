@@ -1,8 +1,8 @@
 /**
- * @file   listaES.c
- * @brief  Arquivo com a implementação do TAD Lista Encadeada Simples.
+ * @file   listaED.c
+ * @brief  Arquivo com a implementação do TAD Lista Duplamente Encadeada.
  * @author Leandro Maia Silva
- * @date   2020-02-19
+ * @date   2020-08-17
  */
 
 /* Inclusões */
@@ -12,18 +12,19 @@
 #include "tipos.h"
 #include "erros.h"
 #include "lista.h"
-#include "listaES.h"
+#include "listaED.h"
 
 /* Tipos */
 
 /// Estrutura com os membros de um item da lista
-struct itemListaES_s {
+struct itemListaED_s {
+  struct itemListaED_s * anterior;
   dadosItem info;
-  struct itemListaES_s * proximo;
+  struct itemListaED_s * proximo;
 };
 
 /// Tipo "Item de Lista"
-typedef struct itemListaES_s itemListaES_t;
+typedef struct itemListaED_s itemListaED_t;
 
 /* Funções auxiliares */
 
@@ -31,7 +32,7 @@ typedef struct itemListaES_s itemListaES_t;
  * Função que inicializa a lista com os valores adequados.
  * @param lista Apontador para a lista a ser utilizada.
  */
-static void listaES_inicializa(listaES_t * lista) {
+static void listaED_inicializa(listaED_t * lista) {
   lista->nItens = 0;
   lista->primeiro = NULL;
 }
@@ -45,15 +46,15 @@ static void listaES_inicializa(listaES_t * lista) {
  * @return SUCESSO caso o item desejado seja encontrado, ou caso contrário,
  * o código do erro ocorrido.
  */
-static erro_t listaES_obtemElementoPosicao(listaES_t * lista, uint32_t posicao, itemListaES_t ** item) {
+static erro_t listaED_obtemElementoPosicao(listaED_t * lista, uint32_t posicao, itemListaED_t ** item) {
 
-  itemListaES_t * atual;
+  itemListaED_t * atual;
 
   // Verifica se a lista possui elementos suficientes
   if (posicao > lista->nItens) return ERRO_LISTA_POSICAO_INVALIDA;
 
   // Começa a percorrer a lista a partir do primeiro elemento
-  atual = (itemListaES_t *)lista->primeiro;
+  atual = (itemListaED_t *)lista->primeiro;
 
 
   while (posicao-- != 0) {
@@ -71,13 +72,13 @@ static erro_t listaES_obtemElementoPosicao(listaES_t * lista, uint32_t posicao, 
  * Função que cria e inicializa uma lista encadeada.
  * @return Apontador para o local onde a lista criada foi armazenada.
  */
-listaES_t * listaES_cria(void) {
+listaED_t * listaED_cria(void) {
 
   // Reserva espaço na memória para a lista
-  listaES_t * lista = (listaES_t *)malloc(sizeof(listaES_t));
+  listaED_t * lista = (listaED_t *)malloc(sizeof(listaED_t));
 
   // Inicializa a mesma
-  listaES_inicializa(lista);
+  listaED_inicializa(lista);
 
   // Retorna o endereço da lista criada e inicializada
   return lista;
@@ -88,12 +89,12 @@ listaES_t * listaES_cria(void) {
  * por ela mesma.
  * @param lista Apontador para a lista a ser destruida.
  */
-void listaES_destroi(listaES_t * lista) {
+void listaED_destroi(listaED_t * lista) {
 
-  itemListaES_t * atual, * proximo;
+  itemListaED_t * atual, * proximo;
 
   // Começa pelo primeiro elemento da lista
-  atual = (itemListaES_t *)lista->primeiro;
+  atual = (itemListaED_t *)lista->primeiro;
 
   // Percorre todos os elementos da lista dando free em cada um deles
   while (atual != NULL) {
@@ -113,8 +114,8 @@ void listaES_destroi(listaES_t * lista) {
  * @return SUCESSO caso o item seja inserido corretamente na lista, ou caso
  * contrário, o código do erro.
  */
-erro_t listaES_insereInicio(listaES_t * lista, dadosItem info) {
-  return listaES_insereNesimaPosicao(lista, info, 0);
+erro_t listaED_insereInicio(listaED_t * lista, dadosItem info) {
+  return listaED_insereNesimaPosicao(lista, info, 0);
 }
 
 /**
@@ -124,8 +125,8 @@ erro_t listaES_insereInicio(listaES_t * lista, dadosItem info) {
  * @return SUCESSO caso o item seja inserido corretamente na lista, ou caso
  * contrário, o código do erro.
  */
-erro_t listaES_insereFinal(listaES_t * lista, dadosItem info) {
-  return listaES_insereNesimaPosicao(lista, info, lista->nItens);
+erro_t listaED_insereFinal(listaED_t * lista, dadosItem info) {
+  return listaED_insereNesimaPosicao(lista, info, lista->nItens);
 }
 
 /**
@@ -137,34 +138,49 @@ erro_t listaES_insereFinal(listaES_t * lista, dadosItem info) {
  * @return SUCESSO caso o item seja inserido corretamente na lista, ou caso
  * contrário, o código do erro.
  */
-erro_t listaES_insereNesimaPosicao(listaES_t * lista, dadosItem info, uint32_t posicao) {
+erro_t listaED_insereNesimaPosicao(listaED_t * lista, dadosItem info, uint32_t posicao) {
 
   erro_t erro;
-  itemListaES_t * novoItem, * anterior;
+  itemListaED_t * novoItem, * anterior;
 
   // Verifico se a posição faz sentido com o número atual de itens na lista
   if (posicao > lista->nItens) return ERRO_LISTA_POSICAO_INVALIDA;
 
   // Cria um novo elemento e inicializa o item
-  novoItem = (itemListaES_t *)malloc(sizeof(itemListaES_t));
+  novoItem = (itemListaED_t *)malloc(sizeof(itemListaED_t));
   novoItem->info = info;
   novoItem->proximo = NULL;
+  novoItem->anterior = NULL;
 
   // Se for a posição ZERO, então o novo item será o novo primeiro item
   if (posicao == 0) {
-    novoItem->proximo = (itemListaES_t *)lista->primeiro;
+    novoItem->proximo = (itemListaED_t *)lista->primeiro;
+
+    // Se o antigo primeiro não era nulo, então ele precisa apontar para o novo item
+    if (novoItem->proximo != NULL) {
+      novoItem->proximo->anterior = novoItem;
+    }
+
+    // Torna o novo item o primeiro da lista
     lista->primeiro = novoItem;
   }
   // .. senão, então eu busco o item da posição N-1 para ligar o novo item.
   else {
 
     // Busco o item anterior para fazer a ligação
-    erro = listaES_obtemElementoPosicao(lista, posicao - 1, &anterior);
+    erro = listaED_obtemElementoPosicao(lista, posicao - 1, &anterior);
     if (erro != SUCESSO) return erro;
 
     // Faço a ligação
     novoItem->proximo = anterior->proximo;
     anterior->proximo = novoItem;
+    novoItem->anterior = anterior;
+
+    // Se existia um item depois da posição onde estou colocando o novoItem, então
+    // preciso fazê-lo apontar para o novoItem.
+    if (novoItem->proximo != NULL) {
+      novoItem->proximo->anterior = novoItem;
+    }
   }
 
   // Se chegou até aqui é porque o novo item foi inserido com sucesso na lista
@@ -179,29 +195,33 @@ erro_t listaES_insereNesimaPosicao(listaES_t * lista, dadosItem info, uint32_t p
  * @return SUCESSO caso o item seja inserido removido na lista, ou caso
  * contrário, o código do erro.
  */
-erro_t listaES_removeElemento(listaES_t * lista, dadosItem info) {
+erro_t listaED_removeElemento(listaED_t * lista, dadosItem info) {
 
-  itemListaES_t * anterior = NULL;
-  itemListaES_t * elementoARemover = (itemListaES_t *)lista->primeiro;
+  itemListaED_t * elementoARemover = (itemListaED_t *)lista->primeiro;
 
   // Percore os elementos da lista procurando aquele cuja informação é a desejada
   while (elementoARemover != NULL) {
     if (elementoARemover->info == info) break;
-    anterior = elementoARemover;
     elementoARemover = elementoARemover->proximo;
   }
 
   // Verifica se o item foi encontrado, ou seja, se o elementoARemover não é nulo
   if (elementoARemover == NULL) { return ERRO_LISTA_ITEM_NAO_ENCONTRADO; }
 
-  // Se chegou aqui é porque encontrou o item desejado e ele está no elementoARemover
-  // Se o anterior é nulo, então é porque o item encontrado é o primeiro da lista ...
-  if (anterior == NULL) {
-    lista->primeiro = elementoARemover->proximo;
+  // Se o próximo existe, então ele aponta para o anterior
+  if (elementoARemover->proximo != NULL) {
+    elementoARemover->proximo->anterior = elementoARemover->anterior;
   }
-  // ... senão, então ele pode estar em qualquer lugar, mas garantidamente não é o primeiro
+
+  // Se o anterior existe, então ele aponta para o próximo
+  if (elementoARemover->anterior != NULL) {
+    elementoARemover->anterior->proximo = elementoARemover->proximo;
+  }
+  // ... se não existe, então estou removendo o primeiro da listatenho, então sou o primeiro da lista
   else {
-    anterior->proximo = elementoARemover->proximo;
+
+    // O novo início é próximo do item a ser removido removido
+    lista->primeiro = elementoARemover->proximo;
   }
 
   // Se chegou até aqui é porque o item foi removido corretamente da lista
@@ -217,31 +237,33 @@ erro_t listaES_removeElemento(listaES_t * lista, dadosItem info) {
  * @return SUCESSO caso o item seja inserido removido na lista, ou caso
  * contrário, o código do erro.
  */
-erro_t listaES_removePosicao(listaES_t * lista, uint32_t posicao) {
+erro_t listaED_removePosicao(listaED_t * lista, uint32_t posicao) {
 
   erro_t erro;
-  itemListaES_t * elementoARemover, * anterior;
+  itemListaED_t * elementoARemover;
 
   // Verifico se a posição faz sentido com o número atual de itens na lista
   if (posicao >= lista->nItens) return ERRO_LISTA_POSICAO_INVALIDA;
 
   // Aqui, garantidamente, eu tenho pelo menos um elemento na lista
 
-  // Se for o primeiro da lista, então basta pulá-lo
-  if (posicao == 0) {
-    elementoARemover = (itemListaES_t *)lista->primeiro;
-    lista->primeiro = elementoARemover->proximo;
+  // Busco o item a ser removido
+  erro = listaED_obtemElementoPosicao(lista, posicao, &elementoARemover);
+  if (erro != SUCESSO) return erro;
+
+  // Se eu tenho um anterior, então faço ele apontar para o próximo
+  if (elementoARemover->anterior != NULL) {
+    elementoARemover->anterior->proximo = elementoARemover->proximo;
   }
-  // .. senão, eu busco o anterior e pulo o elemento a ser removido
-  else {
 
-    // Busco o item anterior para fazer a ligação
-    erro = listaES_obtemElementoPosicao(lista, posicao - 1, &anterior);
-    if (erro != SUCESSO) return erro;
+  // Se eu tenho um próximo, então faço ele apontar para o anterior
+  if (elementoARemover->proximo != NULL) {
+    elementoARemover->proximo->anterior = elementoARemover->anterior;
+  }
 
-    // Pulo o elemento a ser removido
-    elementoARemover = anterior->proximo;
-    anterior->proximo = elementoARemover->proximo;
+  // Se eu removi o primeiro item da lista, então o próximo é o novo primeiro
+  if (posicao == 0) {
+    lista->primeiro = elementoARemover->proximo;
   }
 
   // Se chegou até aqui é porque o item foi pulado e removido com sucesso na lista
@@ -259,10 +281,10 @@ erro_t listaES_removePosicao(listaES_t * lista, uint32_t posicao) {
  * @return SUCESSO caso o item desejado seja encontrado, ou caso contrário,
  * o código do erro ocorrido.
  */
-bool_t listaES_busca(listaES_t * lista, dadosItem info, uint32_t * posicao) {
+bool_t listaED_busca(listaED_t * lista, dadosItem info, uint32_t * posicao) {
 
   uint32_t pos = 0;
-  itemListaES_t * proximo = (itemListaES_t *)lista->primeiro;
+  itemListaED_t * proximo = (itemListaED_t *)lista->primeiro;
 
   // Percore os elementos da lista procurando aquele cuja informação é a desejada
   while (proximo != NULL) {
@@ -287,7 +309,7 @@ bool_t listaES_busca(listaES_t * lista, dadosItem info, uint32_t * posicao) {
  * @param lista Apontador para a lista a ser utilizada.
  * @return VERDADEIRO caso a lista esteja vazia, ou FALSO caso contrário.
  */
-bool_t listaES_estaVazia(listaES_t * lista) {
+bool_t listaED_estaVazia(listaED_t * lista) {
   return lista->nItens == 0;
 }
 
@@ -295,11 +317,11 @@ bool_t listaES_estaVazia(listaES_t * lista) {
  * Função que imprime todos os itens da lista.
  * @param lista Apontador para a lista a ser utilizada.
  */
-void listaES_imprime(listaES_t * lista) {
+void listaED_imprime(listaED_t * lista) {
 
   uint32_t i;
-  itemListaES_t * atual;
-  itemListaES_t * proximo = lista->primeiro;
+  itemListaED_t * atual;
+  itemListaED_t * proximo = lista->primeiro;
 
   printf("Lista com %u item(s)\n", lista->nItens);
   printf("Impressao da lista\n"\

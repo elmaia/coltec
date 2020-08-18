@@ -2,7 +2,7 @@
  * @file   listaES.h
  * @brief  Arquivo com a definição do TAD Lista Encadeada Simples.
  * @author Leandro Maia Silva
- * @date   2020-02-19
+ * @date   2020-08-13
  */
 
 #pragma once
