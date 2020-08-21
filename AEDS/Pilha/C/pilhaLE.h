@@ -28,12 +28,12 @@ typedef struct pilhaLE_s pilhaLE_t;
 
 /* Funções exportadas */
 pilhaLE_t * pilhaLE_cria(void);
-void pilhaLE_destroi(pilhaLE_t * lista);
+void pilhaLE_destroi(pilhaLE_t * pilha);
 erro_t pilhaLE_empilha(pilhaLE_t * pilha, dadosItem info);
 erro_t pilhaLE_desempilha(pilhaLE_t * pilha, dadosItem * info);
 erro_t pilhaLE_topo(pilhaLE_t * pilha, dadosItem * topo);
-erro_t pilhaLE_busca(pilhaLE_t * lista, dadosItem info, uint32_t * posicao);
-bool_t pilhaLE_estaVazia(pilhaLE_t * lista);
-void pilhaLE_imprime(pilhaLE_t * lista);
+erro_t pilhaLE_busca(pilhaLE_t * pilha, dadosItem info, uint32_t * posicao);
+bool_t pilhaLE_estaVazia(pilhaLE_t * pilha);
+void pilhaLE_imprime(pilhaLE_t * pilha);
 
 #endif // __PILHA_LE_h__
