@@ -197,7 +197,7 @@ void pilhaLE_imprime(pilhaLE_t * pilha) {
 
   uint32_t i;
   itemPilhaLE_t * atual;
-  itemPilhaLE_t * proximo = pilha->topo;
+  itemPilhaLE_t * proximo = (itemPilhaLE_t *)pilha->topo;
 
   printf("pilha com %u item(s)\n", pilha->nItens);
   printf("Impressao da pilha\n"\
