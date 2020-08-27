@@ -275,11 +275,11 @@ bool_t listaES_busca(listaES_t * lista, dadosItem info, uint32_t * posicao) {
   // Caso a lista tenha chegado no final e nenhum item foi encontrado, então
   // o próximo é NULL
   // Caso a lista esteja vazia, então o próximo é NULL desde o início.
-  if (proximo == NULL) return ERRO_LISTA_ITEM_NAO_ENCONTRADO;
+  if (proximo == NULL) return FALSO;
   
   // Se chegou até aqui é porque o item foi encontrado e sua posição está em pos
   *posicao = pos;
-  return SUCESSO;
+  return VERDADEIRO;
 }
 
 /**
