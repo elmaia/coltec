@@ -111,7 +111,6 @@ erro_t pilhaLE_empilha(pilhaLE_t * pilha, dadosItem info) {
  */
 erro_t pilhaLE_desempilha(pilhaLE_t * pilha, dadosItem * info) {
 
-  itemPilhaLE_t * anterior = NULL;
   itemPilhaLE_t * elementoARemover = (itemPilhaLE_t *)pilha->topo;
 
   // Verifica se a pilha está vazia
