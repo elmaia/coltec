@@ -43,8 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ListaED.cs" />
     <Compile Include="ListaES.cs" />
     <Compile Include="ListaExceptions.cs" />
+    <Compile Include="ListaORD.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
