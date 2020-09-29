@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ListaEncadeada {
-  class PosicaoInvalidaException : Exception {
+  class PosicaoInvalidaException : ArgumentOutOfRangeException {
     public PosicaoInvalidaException() : base("Posição inválida") { }
   }
 
-  class ItemNaoEncontradoException : Exception {
+  class ItemNaoEncontradoException : ApplicationException {
     public ItemNaoEncontradoException() : base("Item Não Encontrado") { }
   }
 

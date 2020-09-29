@@ -9,7 +9,7 @@ namespace ListaEncadeada {
   /// <summary>
   /// Classe com a implementação de uma Lista Encadeada Simples.
   /// </summary>
-  /// <typeparam name="Dado"></typeparam>
+  /// <typeparam name="Dado">Tipo do dado que será armazenado na lista.</typeparam>
   class ListaES<Dado> where Dado : IComparable {
 
     /// <summary>

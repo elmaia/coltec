@@ -1,0 +1,273 @@
+// Aula03_B.pdf
+// Slide 16
+
+// -------------------------------------------------------------------------------------------------
+// Exercício 1
+// Implemente algoritmo para Imprimir os números ímpares de 0 a 100.
+// REPITA-ATÉ
+// -------------------------------------------------------------------------------------------------
+Início
+  // Declaração das variáveis
+  inteiro i;
+  constante inteiro MAIOR_NUMERO = 100;
+  booleano eImpar;
+  
+  // Percorre os números verificando se são impares
+  i = 0;
+  repita 
+    eImpar = (i MOD 2) != 0;
+    se eImpar então
+      imprime(i + " é impar.");
+    fim-se
+  
+    i = i + 1;
+  até i <= MAIOR_NUMERO;
+Fim
+
+// -------------------------------------------------------------------------------------------------
+// Exercício 1
+// Implemente algoritmo para Imprimir os números ímpares de 0 a 100.
+// PARA
+// -------------------------------------------------------------------------------------------------
+Início
+  // Declaração das variáveis
+  inteiro i;
+  constante inteiro MAIOR_NUMERO = 100;
+  booleano eImpar;
+  
+  // Percorre os números verificando se são impares
+  para i de 0 até MAIOR_NUMERO faça
+    eImpar = (i MOD 2) != 0;
+    se eImpar então
+      imprime(i + " é impar.");
+    fim-se
+  fim-para
+Fim
+
+// -------------------------------------------------------------------------------------------------
+// Exercício 2
+// Implemente um algoritmo e seu fluxograma que calcule a
+// tabuada de 1 a 10 para um número NUM, fornecido pelo usuário.
+// REPITA-ATÉ
+// -------------------------------------------------------------------------------------------------
+Início
+  // Declaração das variáveis
+  inteiro numero, i;
+  
+  // Obtem o número do usuário
+  imprime("Digite o número que deseja a tabuada: ");
+  leia(numero);
+  
+  // Imprime a tabuada
+  // @IMPORTANTE Não é necessário o uso de constante nesse ponto
+  // porque tabuada, em geral, é de 1 a 10 mesmo ;-)
+  i = 1;
+  repita
+    imprime(numero + " x " + i + " = " + (num * i));
+    i = i + 1;
+  até i <= 10;
+Fim
+
+// -------------------------------------------------------------------------------------------------
+// Exercício 2
+// Implemente um algoritmo e seu fluxograma que calcule a
+// tabuada de 1 a 10 para um número NUM, fornecido pelo usuário.
+// PARA
+// -------------------------------------------------------------------------------------------------
+Início
+  // Declaração das variáveis
+  inteiro numero, i;
+  
+  // Obtem o número do usuário
+  imprime("Digite o número que deseja a tabuada: ");
+  leia(numero);
+  
+  // Imprime a tabuada
+  // @IMPORTANTE Não é necessário o uso de constante nesse ponto
+  // porque tabuada, em geral, é de 1 a 10 mesmo ;-)
+  para i de 0 até 10 faça
+    imprime(numero + " x " + i + " = " + (num * i));
+  fim-para
+Fim
+
+// -------------------------------------------------------------------------------------------------
+// Exercício 3
+// Implemente o algoritmo que leia uma quantidade
+// indeterminada de valores do usuário, e retorne a multiplicação
+// desses valores. O programa deverá multiplicar enquanto o
+// valor fornecido pelo usuário for diferente de 0.
+// REPITA-ATÉ
+// -------------------------------------------------------------------------------------------------
+Início
+  // Declaração das variáveis
+  real numero, totalMultiplicacao;
+  inteiro nNumerosDigitados;
+
+  // Instruções
+  imprime("Multiplicação dos números.");
+  imprime("0(ZERO) encerra a multiplicação.");
+
+  totalMultiplicacao = 1.0;
+  numero = 1.0;
+  
+  // Vai multiplicando até o usuário digitar 0
+  nNumerosDigitados = 0;
+  repita
+    totalMultiplicacao = totalMultiplicacao * numero;
+  
+    imprime("Digite o número: ")
+    leia(numero);
+    
+    nNumerosDigitados = nNumerosDigitados + 1;
+  até numero != 0;
+  
+  // Verifica se só digitou 1 número. Se for, significa que o usuário
+  // digitou 0 e portanto, o totalMultiplicacao tem que ser 0, não 1;
+  se nNumerosDigitados == 1 então
+    totalMultiplicacao = 0.0;
+  fim-se
+  
+  // Informa o total da multiplicação
+  imprime("O produto de todos os números é " + totalMultiplicacao);
+Fim
+
+// -------------------------------------------------------------------------------------------------
+// Exercício 4
+// Implemente um algoritmo e seu fluxograma que imprima todos
+// os divisores de um número fornecido pelo usuário
+// REPITA-ATÉ
+// -------------------------------------------------------------------------------------------------
+Início
+  // Declaração das variáveis
+  inteiro numero, i;
+  booleano eDivisor;
+  
+  // Solicita ao usuário o número
+  imprime("Digite o número que deseja saber seus divisores: ");
+  leia(numero);
+  
+  // Percorre todos os números de 1 até NUMERO verificando se é divisores
+  i = 1;
+  repita
+    eDivisor = (numero MOD i) == 0;
+    se eDivisor então
+      imprime(i + " é divisor de " + numero);
+    fim-se
+    i = i + 1;
+  até i <= numero;
+Fim
+
+// -------------------------------------------------------------------------------------------------
+// Exercício 4
+// Implemente um algoritmo e seu fluxograma que imprima todos
+// os divisores de um número fornecido pelo usuário
+// PARA
+// -------------------------------------------------------------------------------------------------
+Início
+  // Declaração das variáveis
+  inteiro numero, i;
+  booleano eDivisor;
+  
+  // Solicita ao usuário o número
+  imprime("Digite o número que deseja saber seus divisores: ");
+  leia(numero);
+  
+  // Percorre todos os números de 1 até NUMERO verificando se é divisores
+  para i de 1 até numero faça
+    eDivisor = (numero MOD i) == 0;
+    se eDivisor então
+      imprime(i + " é divisor de " + numero);
+    fim-se
+  fim-para
+Fim
+
+// -------------------------------------------------------------------------------------------------
+// Exercício 5
+// Implemente um algoritmo leia a nota final de 30 alunos, e
+// contabilize quantos alunos foram aprovados, e quantos alunos
+// foram reprovados. Além disso, seu algoritmo deverá imprimir o
+// percentual de aprovação da turma
+// @OBSERVAÇÃO Solicitei que fizesse o exercício para qualquer
+// número de alunos, não apenas 30.
+// REPITA-ATÉ
+// -------------------------------------------------------------------------------------------------
+Início
+  // Declaração das variáveis
+  inteiro i, nAlunos, nAprovados, nReprovados;
+  real nota, percAprovados;
+  constante inteiro NOTA_APROVACAO = 60;
+  
+  // Obtem o número de alunos
+  // @ATENÇÃO Não funciona se digitar 0 alunos.
+  // Pode assumir que o usuário entrou com um número válido.
+  imprime("Digite o número de alunos: ");
+  leia(nAlunos);
+  
+  nAprovados = 0;
+  i = 1;
+  enquanto
+    // Solicita a nota
+    imprime("Digite a nota do aluno " + i + ":");
+    leia(nota);
+    
+    // Verifica se foi aprovado
+    se nota >= NOTA_APROVACAO então
+      nAprovados = nAprovados + 1;
+    fim-se
+    
+    i = i + 1;
+  repita i <= nAlunos;
+  
+  // Calcula o número de reprovados e o percentual de aprovação
+  nReprovados = nAlunos - nAprovados;
+  percAprovados = nAprovados * 100.0 / nAlunos;
+  
+  // Informa ao usuário
+  imprime("A turma com " + nAlunos + " obteve o seguinte resultado:");
+  imprime("Aprovados: " + nAprovados + " / Reprovados: " + nReprovados);
+  imprime("Percentual de aprovação: " + percAprovados + "%");
+Fim
+
+// -------------------------------------------------------------------------------------------------
+// Exercício 5
+// Implemente um algoritmo leia a nota final de 30 alunos, e
+// contabilize quantos alunos foram aprovados, e quantos alunos
+// foram reprovados. Além disso, seu algoritmo deverá imprimir o
+// percentual de aprovação da turma
+// @OBSERVAÇÃO Solicitei que fizesse o exercício para qualquer
+// número de alunos, não apenas 30.
+// PARA
+// -------------------------------------------------------------------------------------------------
+Início
+  // Declaração das variáveis
+  inteiro i, nAlunos, nAprovados, nReprovados;
+  real nota, percAprovados;
+  constante inteiro NOTA_APROVACAO = 60;
+  
+  // Obtem o número de alunos
+  // @ATENÇÃO Não funciona se digitar 0 alunos.
+  // Pode assumir que o usuário entrou com um número válido.
+  imprime("Digite o número de alunos: ");
+  leia(nAlunos);
+  
+  nAprovados = 0;
+  para i de 1 até nAlunos faça
+    // Solicita a nota
+    imprime("Digite a nota do aluno " + i + ":");
+    leia(nota);
+    
+    // Verifica se foi aprovado
+    se nota >= NOTA_APROVACAO então
+      nAprovados = nAprovados + 1;
+    fim-se
+  fim-para
+  
+  // Calcula o número de reprovados e o percentual de aprovação
+  nReprovados = nAlunos - nAprovados;
+  percAprovados = nAprovados * 100.0 / nAlunos;
+  
+  // Informa ao usuário
+  imprime("A turma com " + nAlunos + " obteve o seguinte resultado:");
+  imprime("Aprovados: " + nAprovados + " / Reprovados: " + nReprovados);
+  imprime("Percentual de aprovação: " + percAprovados + "%");
+Fim
