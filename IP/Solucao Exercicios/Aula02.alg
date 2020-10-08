@@ -1,5 +1,5 @@
-// Aula02.pdf
-// Slide 24
+// aula02 - algoritmos - estruturas condicionais.pdf
+// Slides 24 e 25
 
 // -------------------------------------------------------------------------------------------------
 // Exercício 1
@@ -119,12 +119,8 @@ Início
   fim-se
 Fim
 
-
-// Aula02.pdf
-// Slide 25
-
 // -------------------------------------------------------------------------------------------------
-// Exercício 1
+// Exercício 4
 // Faça um algoritmo para ler dois números e um dos símbolos
 // das operações: +, -, * e /; Imprimir o resultado da operação
 // efetuada sobre os números lidos.
@@ -177,7 +173,7 @@ Início
 Fim
 
 // -------------------------------------------------------------------------------------------------
-// Exercício 2
+// Exercício 5
 // Faça o algoritmo e fluxograma que leia 3 comprimentos (x,y e
 // z) e responda se eles formam um triângulo, ou seja, se x < y
 // + z e y < x + z e z < x + y
@@ -208,7 +204,7 @@ Início
 Fim
 
 // -------------------------------------------------------------------------------------------------
-// Exercício 3
+// Exercício 6
 // Escreva o algoritmo para o seguinte problema: tendo como
 // dados de entrada a altura e o sexo de uma pessoa, construa
 // um programa que calcule seu peso ideal, utilizando as

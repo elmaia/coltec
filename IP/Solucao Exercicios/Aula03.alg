@@ -1,4 +1,4 @@
-// Aula03.pdf
+// aula03 - algoritmos - estruturas repeticao.pdf
 // Slide 19
 
 // -------------------------------------------------------------------------------------------------
@@ -157,11 +157,10 @@ Início
   imprime("Percentual de aprovação: " + percAprovados + "%");
 Fim
 
-// Aula03_B.pdf
-// Slide 16
+// Slide 34
 
 // -------------------------------------------------------------------------------------------------
-// Exercício 1
+// Exercício 6
 // Implemente algoritmo para Imprimir os números ímpares de 0 a 100.
 // REPITA-ATÉ
 // -------------------------------------------------------------------------------------------------
@@ -184,7 +183,7 @@ Início
 Fim
 
 // -------------------------------------------------------------------------------------------------
-// Exercício 1
+// Exercício 6
 // Implemente algoritmo para Imprimir os números ímpares de 0 a 100.
 // PARA
 // -------------------------------------------------------------------------------------------------
@@ -204,7 +203,7 @@ Início
 Fim
 
 // -------------------------------------------------------------------------------------------------
-// Exercício 2
+// Exercício 7
 // Implemente um algoritmo e seu fluxograma que calcule a
 // tabuada de 1 a 10 para um número NUM, fornecido pelo usuário.
 // REPITA-ATÉ
@@ -228,7 +227,7 @@ Início
 Fim
 
 // -------------------------------------------------------------------------------------------------
-// Exercício 2
+// Exercício 7
 // Implemente um algoritmo e seu fluxograma que calcule a
 // tabuada de 1 a 10 para um número NUM, fornecido pelo usuário.
 // PARA
@@ -250,7 +249,7 @@ Início
 Fim
 
 // -------------------------------------------------------------------------------------------------
-// Exercício 3
+// Exercício 8
 // Implemente o algoritmo que leia uma quantidade
 // indeterminada de valores do usuário, e retorne a multiplicação
 // desses valores. O programa deverá multiplicar enquanto o
@@ -291,7 +290,7 @@ Início
 Fim
 
 // -------------------------------------------------------------------------------------------------
-// Exercício 4
+// Exercício 9
 // Implemente um algoritmo e seu fluxograma que imprima todos
 // os divisores de um número fornecido pelo usuário
 // REPITA-ATÉ
@@ -317,7 +316,7 @@ Início
 Fim
 
 // -------------------------------------------------------------------------------------------------
-// Exercício 4
+// Exercício 9
 // Implemente um algoritmo e seu fluxograma que imprima todos
 // os divisores de um número fornecido pelo usuário
 // PARA
@@ -341,7 +340,7 @@ Início
 Fim
 
 // -------------------------------------------------------------------------------------------------
-// Exercício 5
+// Exercício 10
 // Implemente um algoritmo leia a nota final de 30 alunos, e
 // contabilize quantos alunos foram aprovados, e quantos alunos
 // foram reprovados. Além disso, seu algoritmo deverá imprimir o
@@ -388,7 +387,7 @@ Início
 Fim
 
 // -------------------------------------------------------------------------------------------------
-// Exercício 5
+// Exercício 10
 // Implemente um algoritmo leia a nota final de 30 alunos, e
 // contabilize quantos alunos foram aprovados, e quantos alunos
 // foram reprovados. Além disso, seu algoritmo deverá imprimir o
