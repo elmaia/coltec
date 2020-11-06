@@ -25,10 +25,12 @@
 /* Funções Exportadas */
 erro_t grafoMA_cria(grafo_t ** grafo, uint16_t nVertices, tipoGrafo_t tipo);
 void grafoMA_destroi(grafo_t ** grafo);
-bool_t grafoMA_existeAresta(grafo_t ** grafo, vertice_t origem, vertice_t destino);
-erro_t grafoMA_criaAresta(grafo_t ** grafo, vertice_t origem, vertice_t destino, custo_t custo);
-erro_t grafoMA_removerAresta(grafo_t ** grafo, vertice_t origem, vertice_t destino);
-erro_t grafoMA_obtemCustoAresta(grafo_t ** grafo, vertice_t origem, vertice_t destino, custo_t * custo);
-void grafoMA_imprime(grafo_t ** grafo);
+erro_t grafoMA_existeAresta(grafo_t * grafo, vertice_t origem, vertice_t destino, bool_t * existe);
+erro_t grafoMA_criaAresta(grafo_t * grafo, vertice_t origem, vertice_t destino, custo_t custo);
+erro_t grafoMA_removerAresta(grafo_t * grafo, vertice_t origem, vertice_t destino);
+erro_t grafoMA_obtemCustoAresta(grafo_t * grafo, vertice_t origem, vertice_t destino, custo_t * custo);
+erro_t grafoMA_obtemVerticesAdjacentes(grafo_t * grafo, vertice_t vertice, vertice_t ** verticesAdj, uint16_t * nVerticesAdj);
+void grafoMA_imprime(grafo_t * grafo);
+erro_t grafoMA_imprimeListasAdjacencias(grafo_t * grafo);
 
 #endif // __GRAFOS_MA_h__

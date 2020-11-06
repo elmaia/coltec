@@ -35,6 +35,8 @@ struct grafo_s {
   void * dados;
   // Número de vértices do grafo [1:65535]
   uint16_t nVertices;
+  // Número de arestas
+  uint32_t nArestas;
   // Tipo do grafo (Não direcionado ou direcionado)
   tipoGrafo_t tipo;
 };
