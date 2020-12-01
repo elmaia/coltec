@@ -1,6 +1,6 @@
 /**
 * @file   Aula10.c
-* @brief  Arquivo com a implementação dos exercícios da Aula 08.
+* @brief  Arquivo com a implementação dos exercícios da Aula 10.
 * @author Leandro Maia Silva
 * @date   2019-06-17
 */
