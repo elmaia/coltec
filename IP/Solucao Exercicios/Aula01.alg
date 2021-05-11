@@ -1,8 +1,10 @@
-// Aula01_parte2.pdf
+// Aula01
 // Slide 37
 
 // -------------------------------------------------------------------------------------------------
 // Exercício 1
+// Faça um programa que leia e imprima o nome, idade e sexo do
+// usuário;
 // -------------------------------------------------------------------------------------------------
 Início
   // Declaração das variáveis
@@ -24,6 +26,9 @@ Fim
 
 // -------------------------------------------------------------------------------------------------
 // Exercício 2
+// Faça um programa que leia o nome de um aluno e a sua nota
+// de três provas. Em seguida, imprima o nome do aluno junto
+// da média das notas;
 // -------------------------------------------------------------------------------------------------
 Início
   // Declaração das variáveis
@@ -52,6 +57,8 @@ Fim
 
 // -------------------------------------------------------------------------------------------------
 // Exercício 3
+// Faça um algoritmo que leia o numerador e o denominador de
+// uma fração e transforme-o em um número decimal.
 // -------------------------------------------------------------------------------------------------
 Início
   // Declaração das variáveis
