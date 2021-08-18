@@ -186,34 +186,36 @@ void exercicio05(void) {
   char texto[TAMANHO_MAXIMO_STRING];
   bool_t ePalindromo = VERDADEIRO;
 
-  char * endFrenteTras;
-  char * endTrasFrente;
+  int posFrenteTras;
+  int posTrasFrente;
 
   // Workaround para jogar o \n que está no stdin depois do scanf
   getchar();
 
   // Lê o texto do usuário
   printf("Digite o texto (ate 100 caracteres): ");
-  endFrenteTras = fgets(texto, TAMANHO_MAXIMO_STRING, stdin);
+  fgets(texto, TAMANHO_MAXIMO_STRING, stdin);
+  posFrenteTras = 0;
 
   // Começando de trás pra frente, é o início + tamanho do texto - \n -1
-  endTrasFrente = endFrenteTras + strlen(endFrenteTras) - 2;
+  posTrasFrente = strlen(texto) - 2;
 
-  while (endFrenteTras < endTrasFrente) {
+  while (posFrenteTras < posTrasFrente) {
 
-    if (*endFrenteTras != *endTrasFrente) {
+    if (texto[posFrenteTras] != texto[posTrasFrente]) {
       ePalindromo = FALSO;
       break;
     }
 
-    endFrenteTras++;
-    endTrasFrente--;
+    posFrenteTras++;
+    posTrasFrente--;
   }
 
   // Mostra se é ou não
   if (ePalindromo) {
     printf("O texto digitado EH palindromo.\n");
-  } else {
+  }
+  else {
     printf("O texto digitado NAO EH palindromo.\n");
   }
 

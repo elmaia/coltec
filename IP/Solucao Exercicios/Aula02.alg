@@ -193,7 +193,7 @@ Início
   leia(z);
   
   // Verifica se é um triângulo
-  eTriangulo = (x < (y + z)) OU (y < (x + z)) OU (z < (x + y));
+  eTriangulo = (x < (y + z)) E (y < (x + z)) E (z < (x + y));
   
   // Informa ao usuário
   se eTriangulo então
