@@ -34,4 +34,6 @@ eu detesto, então, sempre que possível eu irei remover dos slides que eu alter
 
 Além disso, eu gosto bastante de usar constantes. Quando existe uma constante literal que tem um significado, como retornar 0 na função main, eu crio um constante e associo uma palavra que tenha significado a ela.
 
+Aulas aulas de 13 a 16 estão inalteradas, portanto, exatamente como a Virgínia e o João as deixaram.
+
 Caso alguém encontre algo que não esteja correto, ou mesmo sugestões de alteração, fiquem a vontade para me enviar um e-mail (leandro@teiacoltec.org).
