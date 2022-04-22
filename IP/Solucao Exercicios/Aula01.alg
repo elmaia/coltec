@@ -72,14 +72,17 @@ Início
   leia(denominador);
   
   // Transforma em decimal
-  /* Truque: A divisão de INTEIRO/INTEIRO dá inteiro, por isso é necessário
+  /* Truque: A divisão de INTEIRO/INTEIRO dá inteiro em C, por isso é necessário
      transformar um dos dois em REAL antes de realizar a divisão.
+     No entanto, obrigado ao aluno Davi da 105 de 2022 que observou isso, em
+     algoritmos existe um operador de divisão inteira chamado DIV, por essa
+     razão, utilizar barra (/) para dividir já faz exatamente o que a questão pede.
      @IMPORTANTE Não é possível dividir por ZERO, então o correto é não deixar
      essa divisão acontecer, caso o denominador seja ZERO. No entanto, nesse
      momento do curso, não é possível testar isso. Mas esteja atento para
      que, futuramente, o teste seja feito corretamente.
   */
-  numDecimal = numerador * 1.0 / denominador;
+  numDecimal = numerador / denominador;
   
   // Saída para o usuário
   imprime("Número em decimal:" + numDecimal);
