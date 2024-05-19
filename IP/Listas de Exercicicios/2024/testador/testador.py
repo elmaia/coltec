@@ -74,7 +74,7 @@ def main():
         # Compara a saída do programa com a saída esperada
         if resultado.stderr == saida_esperada:
             corretos += 1
-            print("Saídas idênticas!")
+            print("Saídas idênticas!\n")
         else:
             # Em caso de saídas diferentes, imprime as duas para comparação
             print("Saídas diferentes!")
