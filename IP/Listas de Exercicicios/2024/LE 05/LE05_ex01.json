@@ -1,0 +1,22 @@
+[
+    {
+        "entrada": "5\n", 
+        "saida": "10\n"
+    },
+    {
+        "entrada": "12\n", 
+        "saida": "24\n"
+    },
+    {
+        "entrada": "-3\n", 
+        "saida": "-6\n"
+    },
+    {
+        "entrada": "0\n",
+        "saida": "0\n"
+    },
+    {
+        "entrada": "100\n",
+        "saida": "200\n"
+    }
+]
