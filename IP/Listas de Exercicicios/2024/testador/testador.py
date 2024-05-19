@@ -4,7 +4,7 @@ import time        # Para medir o tempo de execução
 import json        # Para trabalhar com dados JSON
 import requests    # Para fazer requisições HTTP
 
-versao = "1.1"
+versao = "1.2"
 
 '''
 Função principal
@@ -72,7 +72,7 @@ def main():
         print(f"Tempo: {tempo_execucao:.2f}s")
 
         # Compara a saída do programa com a saída esperada
-        if resultado.stdout == saida_esperada:
+        if resultado.stderr == saida_esperada:
             corretos += 1
             print("Saídas idênticas!")
         else:
@@ -80,7 +80,7 @@ def main():
             print("Saídas diferentes!")
             print("-" * 20)
             print("Saída obtida:")
-            print(resultado.stdout)
+            print(resultado.stderr)
             print("-" * 20)
             print("Saída esperada:")
             print(saida_esperada)

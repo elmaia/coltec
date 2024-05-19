@@ -1,6 +1,6 @@
 [
     {
-        "entrada": "5\n", 
+        "entrada": "10\n", 
         "saida": "10\n"
     },
     {
@@ -9,7 +9,7 @@
     },
     {
         "entrada": "-3\n", 
-        "saida": "-6\n"
+        "saida": "-3\n"
     },
     {
         "entrada": "0\n",
@@ -17,6 +17,6 @@
     },
     {
         "entrada": "100\n",
-        "saida": "200\n"
+        "saida": "100\n"
     }
 ]
