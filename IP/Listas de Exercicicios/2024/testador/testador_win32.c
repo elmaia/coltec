@@ -66,7 +66,7 @@ int main(int argc, char ** argv) {
   }
 
   // Monta o comando
-  sprintf(comando, "%s 2>&1 >NULL <%s", programa, entrada);
+  sprintf(comando, "%s 2>&1 >nul <%s", programa, entrada);
   printf("Comando: %s\n",comando);
 
   // Abre o programa obtendo a saída
