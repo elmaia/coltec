@@ -4,15 +4,20 @@ import time        # Para medir o tempo de execução
 import json        # Para trabalhar com dados JSON
 import requests    # Para fazer requisições HTTP
 
+versao = "1.1"
+
 '''
 Função principal
 '''
 def main():
     # Verifica se foram fornecidos os 4 argumentos necessários
-    if len(sys.argv) != 4:
+    if len(sys.argv) != 5:
         # Encerra o script se os argumentos estiverem incorretos
         print("Uso: python testador.py <programa> <ano> <lista> <exercicio>")
-        return  
+        return
+        
+    # Mostra nome do programa e versão
+    print(f"Testador.py\nVersão {versao}\n")
 
     # Extrai os argumentos da linha de comando
     programa, ano, lista, exercicio = sys.argv[1:]
@@ -33,7 +38,11 @@ def main():
         return
 
     # Itera sobre cada conjunto de entrada/saída no array JSON
+    corretos, total = 0, 0
     for i, caso_teste in enumerate(dados):
+    
+        # Incrementa o número de testes
+        total += 1
 
         # Extrai a entrada e a saída esperada do dicionário
         entrada = caso_teste["entrada"]
@@ -41,6 +50,7 @@ def main():
 
         try:
             # Executa o programa com a entrada obtida do JSON
+            print(">> Execucao " + str(i + 1))
 
             # Marca o início da execução
             inicio = time.time()  
@@ -55,14 +65,15 @@ def main():
         except subprocess.TimeoutExpired:
             # Se o programa exceder o tempo limite, imprime uma mensagem e encerra
             print("Tempo limite excedido!")
-            return
+            continue
 
         # Calcula e imprime o tempo de execução
         tempo_execucao = fim - inicio
-        print(f"Tempo de execução: {tempo_execucao:.2f} segundos")
+        print(f"Tempo: {tempo_execucao:.2f}s")
 
         # Compara a saída do programa com a saída esperada
         if resultado.stdout == saida_esperada:
+            corretos += 1
             print("Saídas idênticas!")
         else:
             # Em caso de saídas diferentes, imprime as duas para comparação
@@ -73,6 +84,10 @@ def main():
             print("-" * 20)
             print("Saída esperada:")
             print(saida_esperada)
+    
+    # Imprime o resultado final
+    print("-" * 40)
+    print("Resultado: " + str(corretos) + "/" + str(total))
 
 # Executa a função principal se o script for executado diretamente
 if __name__ == "__main__":
