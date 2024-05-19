@@ -65,4 +65,4 @@ Suponha que você queira testar o seu exercício 01 da lista de exercícios 05.
   - gcc -DTESTADOR le05_ex01.c -o le05_ex01.exe
 3. Execute o testador
   - ./testador le05_ex01.exe le05_ex01_entrada01.txt le05_ex01_saida01.txt
-4 - Verifique o resultado
+4. - Verifique o resultado
