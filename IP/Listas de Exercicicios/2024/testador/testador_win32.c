@@ -87,6 +87,7 @@ int main(int argc, char ** argv) {
     Sleep(100);
   }
   if (timed_out) {
+    printf("Tempo limite excedido!\n");
     TerminateProcess(processHandle, 1);
   }
 
