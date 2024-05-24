@@ -3,39 +3,67 @@ import sys         # Para acessar os argumentos da linha de comando
 import time        # Para medir o tempo de execução
 import json        # Para trabalhar com dados JSON
 import requests    # Para fazer requisições HTTP
+import argparse    # Para processamento de argumentos
 
-versao = "1.2"
+versao = "1.3"
 
 '''
 Função principal
 '''
 def main():
-    # Verifica se foram fornecidos os 4 argumentos necessários
-    if len(sys.argv) != 5:
-        # Encerra o script se os argumentos estiverem incorretos
-        print("Uso: python testador.py <programa> <ano> <lista> <exercicio>")
-        return
-        
+
+    # Configuração do argparse
+    parser = argparse.ArgumentParser(description=f"Testador {versao}")
+    parser.add_argument("programa", help="Nome do programa a ser testado")
+    parser.add_argument("-f", "--arquivo", help="Caminho para o arquivo JSON local (opcional)")
+    parser.add_argument("ano", nargs='?', help="Ano (opcional se usar -f)")
+    parser.add_argument("lista", nargs='?', help="Número da lista (opcional se usar -f)")
+    parser.add_argument("exercicio", nargs='?', help="Número do exercício (opcional se usar -f)")
+    args = parser.parse_args()
+    
     # Mostra nome do programa e versão
     print(f"Testador.py\nVersão {versao}\n")
+    
+    # Obtem o nome do programa a ser testado
+    programa = args.programa
 
-    # Extrai os argumentos da linha de comando
-    programa, ano, lista, exercicio = sys.argv[1:]
+    # Se o usuário forneceu um arquivo local
+    if args.arquivo: 
+        try:
+            with open(args.arquivo, 'r') as f:
+                print("Utilizando arquivo de testes local")
+                dados = json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError) as e:
+            print(f"Erro ao ler o arquivo JSON: {e}")
+            return
+    else:  # Se não, baixa do GitHub (como antes)
 
-    # Constrói o nome do arquivo JSON e a URL para baixá-lo do GitHub
-    nome_arquivo = f"LE{lista}_ex{exercicio}.json"
-    url = f"https://raw.githubusercontent.com/elmaia/coltec/master/IP/Listas%20de%20Exercicicios/{ano}/LE%20{lista}/{nome_arquivo}"
+        # Verifica se foram fornecidos os argumentos necessários
+        if len(sys.argv) != 5:
+            # Encerra o script se os argumentos estiverem incorretos
+            print("Uso: python testador.py <programa> <ano> <lista> <exercicio>")
+            return
 
-    try:
-        # Faz a requisição HTTP para baixar o arquivo JSON
-        response = requests.get(url)
-        response.raise_for_status()  # Lança uma exceção se houve erro na requisição
-        # Carrega o conteúdo do arquivo JSON em um dicionário Python
-        dados = json.loads(response.text)
-    except requests.exceptions.RequestException as e:
-        # Caso ocorra algum erro na requisição, imprime uma mensagem e encerra
-        print(f"Erro ao baixar o arquivo: {e}")
-        return
+        # Extrai os argumentos da linha de comando
+        ano, lista, exercicio = args.ano, args.lista, args.exercicio
+
+        # Constrói o nome do arquivo JSON e a URL para baixá-lo do GitHub
+        nome_arquivo = f"LE{lista}_ex{exercicio}.json"
+        url = f"https://raw.githubusercontent.com/elmaia/coltec/master/IP/Listas%20de%20Exercicicios/{ano}/LE%20{lista}/{nome_arquivo}"
+
+        try:
+            # Faz a requisição HTTP para baixar o arquivo JSON
+            print("Baixando arquivo de testes da Internet")
+            response = requests.get(url)
+            response.raise_for_status()  # Lança uma exceção se houve erro na requisição
+            # Carrega o conteúdo do arquivo JSON em um dicionário Python
+            dados = json.loads(response.text)
+        except requests.exceptions.RequestException as e:
+            # Caso ocorra algum erro na requisição, imprime uma mensagem e encerra
+            print(f"Erro ao baixar o arquivo: {e}")
+            return
+            
+    # Neste pontos todos os testes estão carregados em dados
 
     # Itera sobre cada conjunto de entrada/saída no array JSON
     corretos, total = 0, 0
