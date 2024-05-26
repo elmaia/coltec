@@ -8,11 +8,14 @@
 
 /* Inclusões */
 #include <stdio.h>   // printf e scanf
+#include <stdint.h>  // Para usar uint64_t ao invés de unsigned long long int
 
 /* Constantes */
 
 // Constante que associa o código de erro 0 ao significado de sucesso
-#define SUCESSO  0
+#define SUCESSO                 0
+// Constante que associa o código de erro 1 à entrada inválida
+#define ERRO_ENTRADA_INVALIDA  1
 
 // ----------------------------------------------------------------------
 
@@ -21,12 +24,39 @@
  * saída de texto para testes automáticos.
  */
 #ifdef TESTADOR
-  #define PRINTF(format, args...) fprintf(stderr, format, args)
+  #define PRINTF(format, ...) fprintf(stderr, format, __VA_ARGS__)
 #else
-  #define PRINTF(format, args...) printf(format, args)
+  #define PRINTF(format, ...) printf(format, __VA_ARGS__)
 #endif
 
 // ----------------------------------------------------------------------
+
+uint64_t fatorial(int n) {
+  
+  int i;
+  uint64_t fat = 1;
+  
+  for(i = 1; i <= n; i++) {
+    fat*=i;
+  }
+  
+  return fat;
+}
+
+uint64_t elementoTrianguloPascal(int linha, int coluna) {
+  
+  uint64_t elemento;
+  
+  // elemento = linha! / (coluna! * (linha - coluna)!)
+  elemento = fatorial(linha) / (fatorial(coluna) * fatorial(linha - coluna));
+  
+  return elemento;
+}
+
+#define TRIANGULO_PASCAL_ALTURA_MAXIMA         10
+#define TRIANGULO_PASCAL_MAIOR_VALOR          252
+#define TRIANGULO_PASCAL_LARGURA_MAIOR_VALOR    3
+
 
 /**
  *  Faça uma função que calcule um elemento do triângulo de Pascal.
@@ -34,6 +64,31 @@
  *  a 10.
  */
 int main(int argc, char ** argv) {
+    
+  int altura;
+  int i, j;
+  
+  // Obtem a altura
+  printf("Triangulo de Pascal.\n");
+  printf("Digite a altura [0:%d]: ", TRIANGULO_PASCAL_ALTURA_MAXIMA);
+  scanf("%d", &altura);
+  
+  // Verifica a faixa
+  if ((altura < 0) || (altura > TRIANGULO_PASCAL_ALTURA_MAXIMA)) {
+    PRINTF("%s", "Altura invalida");
+    printf(".\n");
+    return ERRO_ENTRADA_INVALIDA;
+  }
+  
+  // Imprime o triangulo
+  for(i = 0; i <= altura; i++) {
+    for(j = 0; j <= i; j++) {
+      PRINTF(" %*llu", TRIANGULO_PASCAL_LARGURA_MAIOR_VALOR, elementoTrianguloPascal(i,j));
+    }
+    
+    // Imprime a quebra de linha
+    PRINTF("%s","\n");
+  }
   
   // Se chegou até aqui é porque correu tudo bem
   return SUCESSO;
