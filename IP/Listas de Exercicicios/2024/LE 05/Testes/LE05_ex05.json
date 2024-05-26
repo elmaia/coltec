@@ -1,0 +1,22 @@
+[
+    {
+        "entrada": "1\n", 
+        "saida": "1"
+    },
+    {
+        "entrada": "5\n", 
+        "saida": "120"
+    },
+    {
+        "entrada": "11\n", 
+        "saida": "39916800"
+    },
+    {
+        "entrada": "12\n", 
+        "saida": "479001600"
+    },
+    {
+        "entrada": "13\n", 
+        "saida": "6227020800"
+    }
+]
