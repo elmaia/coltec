@@ -28,6 +28,19 @@
 
 // ----------------------------------------------------------------------
 
+float adicao(float parcelaA, float parcelaB) {
+  return parcelaA + parcelaB;
+}
+
+float multiplicacao(float fatorA, float fatorB) {
+  return fatorA * fatorB;
+}
+
+float divisao(float dividendo, float divisor) {
+  return dividendo / divisor;
+}
+
+
 /**
  *  Faça um programa que apresente o seguinte menu para o
  *  usuário:
@@ -45,7 +58,49 @@
  *  cálculo deve ser escrito na tela.
  */
 int main(int argc, char ** argv) {
-  
+    
+  int opcao;
+  float a, b;
+
+  do {
+
+    printf("Calculadora simples.\n");
+    printf("1 - Soma\n");
+    printf("2 - Produto\n");
+    printf("3 - Quociente\n");
+    printf("0 - Sair\n");
+    printf("Opcao: ");
+    scanf("%d%*c", &opcao);
+
+    switch (opcao) {
+    case 0: // Sair
+      break;
+    case 1: // Soma
+      printf("Digite os numeros para somar: ");
+      scanf("%f %f", &a, &b);
+      printf("%f + %f = ", a, b);
+      PRINTF("%f", adicao(a, b));
+      printf("\n");
+      break;
+    case 2: // Produto
+      printf("Digite os numeros para multiplicar: ");
+      scanf("%f %f", &a, &b);
+      printf("%f * %f = ", a, b);
+      PRINTF("%f", multiplicacao(a, b));
+      printf("\n");
+      break;
+    case 3: // Quociente
+      printf("Digite os numeros para dividir: ");
+      scanf("%f %f", &a, &b);
+      printf("%f / %f = ", a, b);
+      PRINTF("%f", divisao(a, b));
+      printf("\n");
+      break;
+    default:
+      printf("Opcao invalida.\n");
+    }
+
+  } while (opcao != 0);  
   // Se chegou até aqui é porque correu tudo bem
   return SUCESSO;
 }
