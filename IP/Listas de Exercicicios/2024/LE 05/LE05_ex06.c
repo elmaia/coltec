@@ -43,6 +43,10 @@ uint64_t fatorial(int n) {
   return fat;
 }
 
+#define TRIANGULO_PASCAL_ALTURA_MAXIMA         10
+#define TRIANGULO_PASCAL_MAIOR_VALOR          252
+#define TRIANGULO_PASCAL_LARGURA_MAIOR_VALOR    3
+
 uint64_t elementoTrianguloPascal(int linha, int coluna) {
   
   uint64_t elemento;
@@ -53,10 +57,19 @@ uint64_t elementoTrianguloPascal(int linha, int coluna) {
   return elemento;
 }
 
-#define TRIANGULO_PASCAL_ALTURA_MAXIMA         10
-#define TRIANGULO_PASCAL_MAIOR_VALOR          252
-#define TRIANGULO_PASCAL_LARGURA_MAIOR_VALOR    3
-
+void imprimeTrianguloPascal(int altura) {
+    
+  int i, j;
+    
+  // Imprime o triangulo
+  for(i = 0; i <= altura; i++) {
+    for(j = 0; j <= i; j++) {
+      PRINTF(" %*llu", TRIANGULO_PASCAL_LARGURA_MAIOR_VALOR, elementoTrianguloPascal(i,j));
+    }
+    
+    // Imprime a quebra de linha
+    PRINTF("%s","\n");
+  }}
 
 /**
  *  Faça uma função que calcule um elemento do triângulo de Pascal.
@@ -66,8 +79,7 @@ uint64_t elementoTrianguloPascal(int linha, int coluna) {
 int main(int argc, char ** argv) {
     
   int altura;
-  int i, j;
-  
+
   // Obtem a altura
   printf("Triangulo de Pascal.\n");
   printf("Digite a altura [0:%d]: ", TRIANGULO_PASCAL_ALTURA_MAXIMA);
@@ -80,15 +92,8 @@ int main(int argc, char ** argv) {
     return ERRO_ENTRADA_INVALIDA;
   }
   
-  // Imprime o triangulo
-  for(i = 0; i <= altura; i++) {
-    for(j = 0; j <= i; j++) {
-      PRINTF(" %*llu", TRIANGULO_PASCAL_LARGURA_MAIOR_VALOR, elementoTrianguloPascal(i,j));
-    }
-    
-    // Imprime a quebra de linha
-    PRINTF("%s","\n");
-  }
+  // Imprime o triângulo de pascal
+  imprimeTrianguloPascal(altura);
   
   // Se chegou até aqui é porque correu tudo bem
   return SUCESSO;
