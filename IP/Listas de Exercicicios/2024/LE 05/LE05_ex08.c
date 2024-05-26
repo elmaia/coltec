@@ -28,6 +28,25 @@
 
 // ----------------------------------------------------------------------
 
+int numeroFibonacci(int termo) {
+  
+  int i;
+  int Fn, Fn1 = 0, Fn2 = 1;
+
+  for (i = 0; i < termo; i++) {
+
+    // Calcula o termo atual
+    Fn = Fn1 + Fn2;
+
+    // Atualiza os termos
+    Fn2 = Fn1;
+    Fn1 = Fn;
+  }
+  
+  // Retorna o número
+  return Fn;
+}
+
 /**
  *  Fazer uma função para calcular o número de Fibonacci.
  *  Em seguida faça um programa para calcular e mostrar os N primeiros termos
@@ -36,7 +55,20 @@
  *  f2 + f3
  */
 int main(int argc, char ** argv) {
-  
+    
+  int tamanho;
+  int i;
+
+  // Interação com o usuário
+  printf("Serie de Fibonacci.\n");
+  printf("Digite o numero de termos da serie: ");
+  (void)scanf("%d", &tamanho);
+
+  for (i = 1; i <= tamanho; i++) {
+    // Mostra o número da serie
+    PRINTF("%d ", numeroFibonacci(i));
+  }
+  printf("\n");  
   // Se chegou até aqui é porque correu tudo bem
   return SUCESSO;
 }
