@@ -28,13 +28,47 @@
 
 // ----------------------------------------------------------------------
 
+#define MINUTO_SEGUNDOS    60
+#define HORAS_SEGUNDOS     (60 * MINUTO_SEGUNDOS)
+
+void imprimeDuracaoExperimento(int tempoSegundos) {
+  
+  int horas, minutos, segundos;
+  
+  // Obtem as horas
+  horas = tempoSegundos / HORAS_SEGUNDOS;
+  tempoSegundos -= (horas * HORAS_SEGUNDOS);
+  
+  // Do tempo restante, obtem os minutos
+  minutos = tempoSegundos / MINUTO_SEGUNDOS;
+  tempoSegundos -= (minutos * MINUTO_SEGUNDOS);
+  
+  // O tempo restante já é a quantidade de segundos
+  segundos = tempoSegundos;
+  
+  // Mostra o resultado
+  printf("Tempo experimento: ");
+  PRINTF("%02d:%02d:%02d", horas, minutos, segundos);
+  printf("\n");
+}
+
 /**
  *  Faça um procedimento que receba por parâmetro o tempo
  *  de duração de um experimento expresso em segundos e imprima na tela esse
  *  mesmo tempo em horas, minutos e segundos.
  */
 int main(int argc, char ** argv) {
+    
+  int tempoExperimento;
   
+  // Obtem o tempo do experimento
+  printf("Calculadora de Tempo do Experimento.\n");
+  printf("Digite a duracao, em segundos, do experimento.\n");
+  printf(":> ");
+  scanf("%d", &tempoExperimento);
+  
+  // Imprime o tempo em formato HH:MM:SS
+  imprimeDuracaoExperimento(tempoExperimento);  
   // Se chegou até aqui é porque correu tudo bem
   return SUCESSO;
 }
