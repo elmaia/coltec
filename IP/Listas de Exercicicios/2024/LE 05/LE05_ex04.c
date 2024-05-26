@@ -8,6 +8,7 @@
 
 /* Inclusões */
 #include <stdio.h>   // printf e scanf
+#include <stdbool.h> // bool, true e false
 
 /* Constantes */
 
@@ -28,11 +29,41 @@
 
 // ----------------------------------------------------------------------
 
+bool ehPrimo(unsigned int numero) {
+  
+  unsigned int i;
+  
+  // Verifica se é 1, pois 1 não é primo.
+  if (numero == 1) return false;
+  
+  for(i = 2; i < numero; i++) {
+    // Verifica se é divisor
+    if ((numero % i) == 0) return false;
+  }
+  
+  // Se chegou até aqui é porque é divisível apenas por 1 e ele mesmo
+  return true;
+}
+
 /**
  *  Implemente uma função que receba um número inteiro como
  *  entrada e verifique se esse número é primo ou não.
  */
 int main(int argc, char ** argv) {
+    
+  unsigned int numero;
+  bool numEhPrimo;
+  
+  printf("Teste de numero Primo.\n");
+  printf("Digite o numero pra saber se eh primo.\n");
+  printf(":> ");
+  scanf("%u", &numero);
+  
+  // Verifica se é primo e mostra
+  numEhPrimo = ehPrimo(numero);
+  printf("O numero %u eh primo? ", numero);
+  PRINTF("%s", (numEhPrimo ? "Sim" : "Nao"));
+  printf("\n");
   
   // Se chegou até aqui é porque correu tudo bem
   return SUCESSO;

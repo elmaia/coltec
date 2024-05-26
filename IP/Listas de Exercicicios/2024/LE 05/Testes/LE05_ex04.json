@@ -1,0 +1,22 @@
+[
+    {
+        "entrada": "1\n", 
+        "saida": "Nao"
+    },
+    {
+        "entrada": "2\n", 
+        "saida": "Sim"
+    },
+    {
+        "entrada": "7\n", 
+        "saida": "Sim"
+    },
+    {
+        "entrada": "8885\n", 
+        "saida": "Nao"
+    },
+    {
+        "entrada": "104729\n", 
+        "saida": "Sim"
+    }
+]
