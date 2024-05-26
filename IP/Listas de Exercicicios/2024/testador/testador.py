@@ -49,7 +49,7 @@ def main():
 
         # Constrói o nome do arquivo JSON e a URL para baixá-lo do GitHub
         nome_arquivo = f"LE{lista}_ex{exercicio}.json"
-        url = f"https://raw.githubusercontent.com/elmaia/coltec/master/IP/Listas%20de%20Exercicicios/{ano}/LE%20{lista}/{nome_arquivo}"
+        url = f"https://raw.githubusercontent.com/elmaia/coltec/master/IP/Listas%20de%20Exercicicios/{ano}/LE%20{lista}/Testes/{nome_arquivo}"
 
         try:
             # Faz a requisição HTTP para baixar o arquivo JSON
