@@ -9,9 +9,9 @@
  * saída de texto para testes automáticos.
  */
 #ifdef TESTADOR
-  #define PRINTF(format, args...) fprintf(stderr, format, args)
+  #define PRINTF(format, ...) fprintf(stderr, format, __VA_ARGS__)
 #else
-  #define PRINTF(format, args...) printf(format, args)
+  #define PRINTF(format, ...) printf(format, __VA_ARGS__)
 #endif
 
 /**

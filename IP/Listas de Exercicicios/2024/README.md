@@ -8,7 +8,7 @@ automático que será utilizado durante as provas.
 O objetivo é fazer com que, durante o desenvolvimento, você tenha
 ideia se está no caminho correto.
 
-## Testador
+## Testador em C (Windows e Linux)
 
 A versão atual do testador funciona com a seguinte sintaxe:
 
@@ -20,6 +20,22 @@ O que ele faz?
 - Joga o arquivo de entrada como se fosse o usuário digitando;
 - Tudo que o programa imprimir utilizando o PRINTF é redirecionado;
 - No final, a saída do programa é comparada com a saída de referência.
+
+## Testador em Python (Windows e Linux)
+
+A versão atual do testador funciona com a seguinte sintaxe:
+
+> python testador.py <seu_executavel> <ano> <lista_exercicio> <num_exercicio>
+
+O que ele faz?
+
+- Abre o seu executável e redireciona a saída;
+- Obtem os testes aqui no Github conforme o ano, lista de exercício e número do exercício informado
+- Joga cada entrada do arquivo de testes como se fosse o usuário digitando;
+- Tudo que o programa imprimir utilizando o PRINTF é redirecionado;
+- No final, a saída do programa é comparada com a saída de referência.
+- Depois de todos os casos de testes é exibido o número de acertos e de casos testados.
+
 
 ## Preparo do programa para testes automáticos
 
@@ -40,9 +56,9 @@ com os testador
  * saída de texto para testes automáticos.
  */
 #ifdef TESTADOR
-  #define PRINTF(format, args...) fprintf(stderr, format, args)
+  #define PRINTF(format, ...) fprintf(stderr, format, __VA_ARGS__)
 #else
-  #define PRINTF(format, args...) printf(format, args)
+  #define PRINTF(format, ...) printf(format, __VA_ARGS__)
 #endif
 ```
 
@@ -65,4 +81,6 @@ Suponha que você queira testar o seu exercício 01 da lista de exercícios 05.
   - gcc -DTESTADOR le05_ex01.c -o le05_ex01.exe
 3. Execute o testador
   - ./testador le05_ex01.exe le05_ex01_entrada01.txt le05_ex01_saida01.txt
+  ou
+  - python testador.py le05_ex01.exe 2024 05 01
 4. - Verifique o resultado
