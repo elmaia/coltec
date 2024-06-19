@@ -1,0 +1,22 @@
+[
+  {
+    "entrada": "Socorram-me, subi no onibus em Marrocos\n",
+    "saida": "Sim"
+  },
+  {
+    "entrada": "Anotaram a data da maratona\n",
+    "saida": "Sim"
+  },
+  {
+    "entrada": "Dammit, I'm mad!\n",
+    "saida": "Sim"
+  },
+  {
+    "entrada": "Introducao a Programacao\n",
+    "saida": "Nao"
+  },
+  {
+    "entrada": "A grama e amarga.\n",
+    "saida": "Sim"
+  }
+]

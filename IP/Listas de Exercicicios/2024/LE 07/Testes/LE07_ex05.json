@@ -1,0 +1,22 @@
+[
+  {
+    "entrada": "asa\n",
+    "saida": "Sim"
+  },
+  {
+    "entrada": "arara\n",
+    "saida": "Sim"
+  },
+  {
+    "entrada": "reviver\n",
+    "saida": "Sim"
+  },
+  {
+    "entrada": "ovo\n",
+    "saida": "Sim"
+  },
+  {
+    "entrada": "programacao\n",
+    "saida": "Nao"
+  }
+]

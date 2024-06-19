@@ -1,0 +1,22 @@
+[
+  {
+    "entrada": "Introducao a Programacao\n",
+    "saida": "2"
+  },
+  {
+    "entrada": "Esta eh uma string com varios espacos em branco.\n",
+    "saida": "8"
+  },
+  {
+    "entrada": "Naohaespacosaqui!\n",
+    "saida": "0"
+  },
+  {
+    "entrada": "   String com espacos no inicio e no fim.   \n",
+    "saida": "13"
+  },
+  {
+    "entrada": "\tEsta\tstring\ttem\ttabulacoes,\tnao\tespacos.\n",
+    "saida": "0"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "entrada": "Introducao a Programacao\n",
+    "saida": "Introducao A Programacao"
+  },
+  {
+    "entrada": "esta eh uma frase com palavras minusculas.\n",
+    "saida": "Esta Eh Uma Frase Com Palavras Minusculas."
+  },
+  {
+    "entrada": "ESTA FRASE JA ESTA EM MAIUSCULAS.\n",
+    "saida": "ESTA FRASE JA ESTA EM MAIUSCULAS."
+  },
+  {
+    "entrada": "  frase com espacos no inicio.\n",
+    "saida": "  Frase Com Espacos No Inicio."
+  },
+  {
+    "entrada": "palavras\tseparadas\tpor\ttabulacoes.\n",
+    "saida": "Palavras\tseparadas\tpor\ttabulacoes."
+  }
+]

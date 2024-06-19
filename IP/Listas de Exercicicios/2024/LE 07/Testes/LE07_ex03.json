@@ -1,0 +1,22 @@
+[
+  {
+    "entrada": "Introducao a Programacao\n",
+    "saida": "11"
+  },
+  {
+    "entrada": "Esta eh uma frase com muitas vogais!\n",
+    "saida": "14"
+  },
+  {
+    "entrada": "Qywxstr jklmnpq bcdfghjklmnpqrstvwxz.\n",
+    "saida": "0"
+  },
+  {
+    "entrada": "AEIOUaeiou\n",
+    "saida": "10"
+  },
+  {
+    "entrada": "Num3r0s 3sp3c141s 3 c4r4ct3r3s 3sp3c141s\n",
+    "saida": "1"
+  }
+]

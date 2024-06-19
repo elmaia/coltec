@@ -1,0 +1,22 @@
+[
+  {
+    "entrada": "Introducao a Programacao\n",
+    "saida": "IntroducaoaProgramacao"
+  },
+  {
+    "entrada": "Esta eh uma string com varios espacos em branco.\n",
+    "saida": "Estaehumastringcomvariosespacosembranco."
+  },
+  {
+    "entrada": "Nao ha espacos aqui!\n",
+    "saida": "Naohaespacosaqui!"
+  },
+  {
+    "entrada": "   String com espacos no inicio e no fim.   \n",
+    "saida": "Stringcomespacosnoinicioenofim."
+  },
+  {
+    "entrada": "Um dois tres\n",
+    "saida": "Umdoistres"
+  }
+]
