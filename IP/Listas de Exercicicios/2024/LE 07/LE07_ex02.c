@@ -55,7 +55,7 @@ void imprimeTextoSemEspacos(char texto[]) {
     if (texto[i] == ' ') { continue; }
 
     // Se chegou aqui, não é espaço, então imprime.
-    printf("%c", texto[i]);
+    PRINTF("%c", texto[i]);
   }
 }
 
